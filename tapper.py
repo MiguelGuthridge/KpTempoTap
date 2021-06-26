@@ -57,7 +57,7 @@ class TempoTapper(kp.Plugin):
         suggestions = [self.create_item(
                     category=self.ITEMCAT_VAR,
                     label=str(tempo),
-                    short_desc="Tempo Tapper",
+                    short_desc="Tempo Tapper - Enter to copy to clipboard",
                     target=str(tempo),
                     args_hint=kp.ItemArgsHint.FORBIDDEN,
                     hit_hint=kp.ItemHitHint.IGNORE,
@@ -70,6 +70,8 @@ class TempoTapper(kp.Plugin):
         self.prev_times = []
         if item.category() != self.ITEMCAT_VAR:
             return
+        if item and (item.category() == self.ITEMCAT_VAR):
+            kpu.set_clipboard(item.target())
 
     def on_events(self, flags):
         if flags & kp.Events.PACKCONFIG:
