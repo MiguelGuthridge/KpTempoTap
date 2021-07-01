@@ -48,8 +48,6 @@ class TempoTapper(kp.Plugin):
         
         t_diffs = [self.prev_times[i] - self.prev_times[i-1] for i in range(1, len(self.prev_times))]
         
-        
-        
         tempo = int(1 / (sum(t_diffs)/len(t_diffs)) * 60)
         
         print(t_diffs)
